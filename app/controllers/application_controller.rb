@@ -7,6 +7,7 @@ class ApplicationController < ActionController::API
     	token = token.split(' ').last if token
     	#byebug
     	begin
+    		
       		@decoded = JsonWebToken.decode(token)
       		@current_user = User.find(@decoded[:user_id])
     	rescue ActiveRecord::RecordNotFound => e
